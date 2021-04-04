@@ -1,3 +1,25 @@
 server:
   port: 8091
 
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/springBoot_practice
+    username: spring_practice
+    password: springPractice
+    platform: mysql
+
+  jpa:
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: none
+
+
+  flyway:
+    baseline-on-migrate: true
+    baseline-version: 1
