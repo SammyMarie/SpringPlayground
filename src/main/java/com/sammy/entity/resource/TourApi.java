@@ -1,6 +1,6 @@
 package com.sammy.entity.resource;
 
-import com.sammy.entity.business.TourPackage;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.sammy.entity.enums.Difficulty;
 import com.sammy.entity.enums.Region;
 import lombok.AccessLevel;
@@ -19,23 +19,33 @@ public class TourApi {
 
     private Integer tourId;
 
+    @JsonProperty("title")
     private String title;
 
+    @JsonProperty("description")
     private String description;
 
+    @JsonProperty("blurb")
     private String blurb;
 
-    private BigDecimal price;
+    @JsonProperty("price")
+    private String price;
 
+    @JsonProperty("length")
     private String duration;
 
+    @JsonProperty("bullets")
     private String bullets;
 
+    @JsonProperty("keywords")
     private String keywords;
 
-    private TourPackage tourPackage;
+    @JsonProperty("packageType")
+    private String tourPackageName;
 
-    private Difficulty difficulty;
+    @JsonProperty("difficulty")
+    private String difficulty;
 
-    private Region region;
+    @JsonProperty("region")
+    private String region;
 }
