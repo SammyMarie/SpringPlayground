@@ -9,17 +9,20 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Data
 @Entity
 @Builder
 @AllArgsConstructor
+@Table(name = "Tour_Package")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class TourPackage {
 
     @Id
+    @Column(name = "code")
     private String code;
 
-    @Column
+    @Column(name = "name")
     private String name;
 }

@@ -10,21 +10,26 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import java.math.BigDecimal;
 
 @Data
 @Entity
 @Builder
 @AllArgsConstructor
+@Table(name = "Tour")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Tour {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer tourId;
 
     @Column
@@ -49,14 +54,14 @@ public class Tour {
     private String keywords;
 
     @ManyToOne
+    @JoinColumn(name = "tourPackage")
     private TourPackage tourPackage;
 
     @Column
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     private Difficulty difficulty;
 
     @Column
-    @Enumerated
     private Region region;
 }
 
