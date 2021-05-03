@@ -29,6 +29,7 @@ import java.math.BigDecimal;
 public class Tour {
 
     @Id
+    @Column(name = "tourId")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer tourId;
 

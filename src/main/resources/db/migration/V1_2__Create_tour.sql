@@ -10,5 +10,5 @@ CREATE TABLE IF NOT EXISTS Tour (
     tourPackage VARCHAR(2),
     difficulty VARCHAR(30),
     region VARCHAR(450),
-    FOREIGN KEY (tourPackage) REFERENCES Tour_Package(`code`)
+    FOREIGN KEY (tourPackage) REFERENCES Tour_Package(code)
 );

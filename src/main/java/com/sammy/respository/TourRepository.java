@@ -12,7 +12,6 @@ import java.util.List;
 
 @Repository
 public interface TourRepository extends JpaRepository<Tour, Integer> {
-    //List<Tour> findByTourPackageCode(@Param("code") String tourPackageCode);
     Page<Tour> findByTourPackageCode(@Param("code") String tourPackageCode, Pageable pageable);
 
     @Override

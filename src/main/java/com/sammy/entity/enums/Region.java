@@ -2,7 +2,7 @@ package com.sammy.entity.enums;
 
 import lombok.Getter;
 
-import java.util.Arrays;
+import java.util.NoSuchElementException;
 
 @Getter
 public enum Region {
@@ -25,12 +25,7 @@ public enum Region {
             case "Northern California" -> Region.Northern_California;
             case "Napa/Sonoma Counties" -> Region.Napa_Sonoma_Counties;
             case "Varies" -> Region.Varies;
-            default -> throw new IllegalArgumentException("Label [" + byLabel + "] not supported.");
+            default -> throw new NoSuchElementException("Region [" + byLabel + "] not supported.");
         };
-        /*return Arrays.stream(Region.values())
-                     .filter(region -> region.label.equalsIgnoreCase(byLabel))
-                     .findFirst()
-                     .orElse(null);*/
-
     }
 }

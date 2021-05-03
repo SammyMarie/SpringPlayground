@@ -1,13 +1,14 @@
-package com.sammy.service;
+package com.sammy.service.impl;
 
-import com.sammy.entity.business.Tour;
-import com.sammy.entity.business.TourPackage;
+import com.sammy.entity.mappers.TourMapper;
 import com.sammy.entity.resource.TourApi;
 import com.sammy.respository.TourPackageRepository;
 import com.sammy.respository.TourRepository;
+import com.sammy.service.TourService;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+
+import java.util.NoSuchElementException;
 
 import static com.sammy.entity.mappers.TourMapper.toApi;
 import static com.sammy.entity.mappers.TourMapper.toBusiness;
@@ -22,12 +23,19 @@ public class TourServiceImpl implements TourService {
     @Override
     public TourApi createTour(TourApi tourApi) {
 
-        TourPackage tourPackage = packageRepository.findByName(tourApi.getTourPackageName())
+        var tourPackage = packageRepository.findByName(tourApi.getTourPackageName())
                                                    .orElseThrow(() -> new RuntimeException("Tour Package does not exist "
                                                                                            + tourApi.getTourPackageName()));
 
-        Tour tour = toBusiness(tourApi, tourPackage);
+        var tour = toBusiness(tourApi, tourPackage);
         return toApi(tourRepository.save(tour));
+    }
+
+    @Override
+    public TourApi retrieveTour(int tourId) {
+        return tourRepository.findById(tourId)
+                             .map(TourMapper::toApi)
+                             .orElseThrow(() -> new NoSuchElementException("Tour does not exist " + tourId));
     }
 
     @Override

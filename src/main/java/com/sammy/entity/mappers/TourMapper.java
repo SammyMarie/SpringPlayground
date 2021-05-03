@@ -12,6 +12,8 @@ import lombok.NoArgsConstructor;
 import java.math.BigDecimal;
 import java.util.Optional;
 
+import static java.util.Objects.nonNull;
+
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public final class TourMapper {
 
@@ -49,7 +51,7 @@ public final class TourMapper {
                       .keywords(tour.getKeywords())
                       .tourPackageName(tour.getTourPackage().getName())
                       .difficulty(tour.getDifficulty().name())
-                      .region(tour.getRegion().name())
+                      .region(nonNull(tour.getRegion()) ? tour.getRegion().getLabel() : null)
                       .build();
     }
 }

@@ -1,9 +1,10 @@
-package com.sammy.service;
+package com.sammy.service.impl;
 
 import com.sammy.entity.business.TourPackage;
 import com.sammy.entity.mappers.TourPackageMapper;
 import com.sammy.entity.resource.TourPackageApi;
 import com.sammy.respository.TourPackageRepository;
+import com.sammy.service.TourPackageService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +15,7 @@ import static com.sammy.entity.mappers.TourPackageMapper.toApi;
 
 @Service
 @RequiredArgsConstructor
-public class TourPackageServiceImpl implements TourPackageService{
+public class TourPackageServiceImpl implements TourPackageService {
 
     private final TourPackageRepository packageRepository;
 

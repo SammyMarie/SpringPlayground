@@ -8,7 +8,7 @@ import org.springframework.context.ApplicationContext;
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
 @SpringBootTest
-public class SpringPlayGroundApplicationTest {
+class SpringPlayGroundApplicationTest {
 
     @Autowired
     private ApplicationContext applicationContext;
