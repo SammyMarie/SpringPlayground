@@ -33,7 +33,7 @@ public class TourRatingController {
 
     @ResponseStatus(NOT_FOUND)
     @ExceptionHandler(NoSuchElementException.class)
-    public String respondWith400(NoSuchElementException elementException) {
+    public String respondWith404(NoSuchElementException elementException) {
         return elementException.getMessage();
     }
 }
