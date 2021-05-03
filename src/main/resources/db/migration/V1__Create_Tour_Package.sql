@@ -1,4 +1,0 @@
-CREATE TABLE IF NOT EXISTS Tour_Package(
-    `code` VARCHAR(2) NOT NULL PRIMARY KEY,
-    `name` VARCHAR(500)
-);
