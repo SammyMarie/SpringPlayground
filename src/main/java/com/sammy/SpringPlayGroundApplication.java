@@ -2,9 +2,10 @@ package com.sammy;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sammy.entity.resource.TourApi;
+import com.sammy.model.resource.TourApi;
 import com.sammy.service.TourPackageService;
 import com.sammy.service.TourService;
+import com.sammy.service.ToursFromFile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -43,9 +44,8 @@ public class SpringPlayGroundApplication{
     }
 
     private void createTours() throws IOException {
-        List<TourApi> tourApis = new ObjectMapper().setVisibility(FIELD, ANY)
-                          .readValue(new FileInputStream("ExploreCalifornia.json"), new TypeReference<>() {});
-        tourApis.forEach(tourService::createTour);
+        ToursFromFile.readFile("ExploreCalifornia.json")
+                     .forEach(tourService::createTour);
     }
 
     private void createTourPackages() {
@@ -55,7 +55,7 @@ public class SpringPlayGroundApplication{
         packageService.createTourPackage("CY", "Cycle California");
         packageService.createTourPackage("DS", "From Desert to Sea");
         packageService.createTourPackage("KC", "Kids California");
-        packageService.createTourPackage("NW", "Nature watch");
+        packageService.createTourPackage("NW", "Nature Watch");
         packageService.createTourPackage("SC", "Snowboard Cali");
         packageService.createTourPackage("TC", "Taste of California");
     }

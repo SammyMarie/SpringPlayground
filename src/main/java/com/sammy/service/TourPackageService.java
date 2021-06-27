@@ -1,6 +1,6 @@
 package com.sammy.service;
 
-import com.sammy.entity.resource.TourPackageApi;
+import com.sammy.model.resource.TourPackageApi;
 
 import java.util.List;
 

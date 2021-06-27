@@ -1,8 +1,8 @@
 package com.sammy.service.impl;
 
-import com.sammy.entity.business.TourPackage;
-import com.sammy.entity.mappers.TourPackageMapper;
-import com.sammy.entity.resource.TourPackageApi;
+import com.sammy.model.business.TourPackage;
+import com.sammy.model.mappers.TourPackageMapper;
+import com.sammy.model.resource.TourPackageApi;
 import com.sammy.respository.TourPackageRepository;
 import com.sammy.service.TourPackageService;
 import lombok.RequiredArgsConstructor;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static com.sammy.entity.mappers.TourPackageMapper.toApi;
+import static com.sammy.model.mappers.TourPackageMapper.toApi;
 
 @Service
 @RequiredArgsConstructor

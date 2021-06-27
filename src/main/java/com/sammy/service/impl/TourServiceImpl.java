@@ -1,7 +1,8 @@
 package com.sammy.service.impl;
 
-import com.sammy.entity.mappers.TourMapper;
-import com.sammy.entity.resource.TourApi;
+import com.sammy.model.business.Tour;
+import com.sammy.model.mappers.TourMapper;
+import com.sammy.model.resource.TourApi;
 import com.sammy.respository.TourPackageRepository;
 import com.sammy.respository.TourRepository;
 import com.sammy.service.TourService;
@@ -10,8 +11,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.NoSuchElementException;
 
-import static com.sammy.entity.mappers.TourMapper.toApi;
-import static com.sammy.entity.mappers.TourMapper.toBusiness;
+import static com.sammy.model.mappers.TourMapper.toApi;
+import static com.sammy.model.mappers.TourMapper.toBusiness;
 
 @Service
 @RequiredArgsConstructor
@@ -32,7 +33,7 @@ public class TourServiceImpl implements TourService {
     }
 
     @Override
-    public TourApi retrieveTour(int tourId) {
+    public TourApi retrieveTour(String tourId) {
         return tourRepository.findById(tourId)
                              .map(TourMapper::toApi)
                              .orElseThrow(() -> new NoSuchElementException("Tour does not exist " + tourId));

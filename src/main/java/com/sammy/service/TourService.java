@@ -1,10 +1,10 @@
 package com.sammy.service;
 
-import com.sammy.entity.resource.TourApi;
+import com.sammy.model.resource.TourApi;
 
 public interface TourService {
 
     TourApi createTour(TourApi tourApi);
-    TourApi retrieveTour(int tourId);
+    TourApi retrieveTour(String tourId);
     long total();
 }

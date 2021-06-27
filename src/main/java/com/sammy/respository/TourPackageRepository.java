@@ -1,7 +1,7 @@
 package com.sammy.respository;
 
-import com.sammy.entity.business.TourPackage;
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.sammy.model.business.TourPackage;
+import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.data.rest.core.annotation.RestResource;
 
@@ -9,44 +9,28 @@ import java.util.List;
 import java.util.Optional;
 
 @RepositoryRestResource(collectionResourceRel = "packages", path = "packages")
-public interface TourPackageRepository extends JpaRepository<TourPackage, String> {
+public interface TourPackageRepository extends MongoRepository<TourPackage, String> {
     Optional<TourPackage> findByName(String name);
 
     @Override
     @RestResource(exported = false)
-    <S extends TourPackage> List<S> saveAll(Iterable<S> entities);
+    <S extends TourPackage> List<S> saveAll(Iterable<S> tourPackages);
 
     @Override
     @RestResource(exported = false)
-    void flush();
+    <S extends TourPackage> S save(S tourPackage);
 
     @Override
     @RestResource(exported = false)
-    <S extends TourPackage> S saveAndFlush(S entity);
+    void deleteById(String id);
 
     @Override
     @RestResource(exported = false)
-    void deleteInBatch(Iterable<TourPackage> entities);
+    void delete(TourPackage tourPackage);
 
     @Override
     @RestResource(exported = false)
-    void deleteAllInBatch();
-
-    @Override
-    @RestResource(exported = false)
-    <S extends TourPackage> S save(S entity);
-
-    @Override
-    @RestResource(exported = false)
-    void deleteById(String s);
-
-    @Override
-    @RestResource(exported = false)
-    void delete(TourPackage entity);
-
-    @Override
-    @RestResource(exported = false)
-    void deleteAll(Iterable<? extends TourPackage> entities);
+    void deleteAll(Iterable<? extends TourPackage> tourPackages);
 
     @Override
     @RestResource(exported = false)

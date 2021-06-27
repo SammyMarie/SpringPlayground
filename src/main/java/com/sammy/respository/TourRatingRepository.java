@@ -1,19 +1,18 @@
 package com.sammy.respository;
 
-import com.sammy.entity.business.TourRating;
-import com.sammy.entity.business.TourRatingPk;
+import com.sammy.model.business.TourRating;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import java.util.List;
 import java.util.Optional;
 
 @RepositoryRestResource(exported = false)
-public interface TourRatingRepository extends JpaRepository<TourRating, TourRatingPk> {
+public interface TourRatingRepository extends MongoRepository<TourRating, String> {
 
-    List<TourRating> findByRatingPkTourTourId(int tourId);
-    Page<TourRating> findByRatingPkTourTourId(int tourId, Pageable pageable);
-    Optional<TourRating> findByRatingPkTourTourIdAndRatingPkCustomerId(int tourId, int customerId);
+    List<TourRating> findByTourId(String tourId);
+    Page<TourRating> findByTourId(String tourId, Pageable pageable);
+    Optional<TourRating> findByTourIdAndCustomerId(String tourId, int customerId);
 }

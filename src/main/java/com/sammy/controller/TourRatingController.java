@@ -1,6 +1,6 @@
 package com.sammy.controller;
 
-import com.sammy.entity.resource.RatingApi;
+import com.sammy.model.resource.RatingApi;
 import com.sammy.service.TourRatingService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -34,42 +34,42 @@ public class TourRatingController {
 
     @PostMapping
     @ResponseStatus(CREATED)
-    public void createTourRating(@PathVariable("tourId") int tourId,
+    public void createTourRating(@PathVariable("tourId") String tourId,
                                  @RequestBody @Validated RatingApi ratingApi) {
         ratingService.createTourRating(tourId, ratingApi);
     }
 
     @GetMapping
-    public List<RatingApi> retrieveAllRatingsForTour(@PathVariable("tourId") int tourId){
+    public List<RatingApi> retrieveAllRatingsForTour(@PathVariable("tourId") String tourId){
 
         return ratingService.retrieveAllRatings(tourId);
     }
 
     @GetMapping("/pageable")
-    public Page<RatingApi> retrieveAllRatingsForTourPageable(@PathVariable("tourId") int tourId, Pageable pageable){
+    public Page<RatingApi> retrieveAllRatingsForTourPageable(@PathVariable("tourId") String tourId, Pageable pageable){
 
         return ratingService.retrieveAllRatingsPaging(tourId, pageable);
     }
 
     @GetMapping("/average")
-    public Map<String, Double> retrieveAverage(@PathVariable("tourId") int tourId){
+    public Map<String, Double> retrieveAverage(@PathVariable("tourId") String tourId){
         return ratingService.findAverage(tourId);
     }
 
     @PutMapping
-    public RatingApi modifyRating(@PathVariable("tourId") int tourId,
+    public RatingApi modifyRating(@PathVariable("tourId") String tourId,
                                   @RequestBody @Validated RatingApi ratingApi){
         return ratingService.updateRating(tourId, ratingApi);
     }
 
     @PatchMapping
-    public RatingApi patchModifyRating(@PathVariable("tourId") int tourId,
+    public RatingApi patchModifyRating(@PathVariable("tourId") String tourId,
                                        @RequestBody @Validated RatingApi ratingApi){
         return ratingService.patchRating(tourId, ratingApi);
     }
 
     @DeleteMapping("/{customerId}")
-    public void removeRating(@PathVariable("tourId") int tourId,
+    public void removeRating(@PathVariable("tourId") String tourId,
                              @PathVariable("customerId") int customerId){
         ratingService.removeRating(tourId, customerId);
     }
